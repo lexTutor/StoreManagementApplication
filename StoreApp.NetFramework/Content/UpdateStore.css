@@ -1,0 +1,53 @@
+﻿
+.login {
+    width: 382px;
+    overflow: hidden;
+    margin: auto;
+    margin: 20px 0 0 450px;
+    padding: 80px;
+    background: #3077d2;
+    border-radius: 15px;
+}
+
+h2 {
+    text-align: center;
+    color: #277582;
+    padding: 20px;
+}
+
+label {
+    color: #fff;
+    font-size: 17px;
+}
+
+#StoreName {
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+#ProductCount {
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+#Update {
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 17px;
+    padding-left: 7px;
+    margin-left: 50px;
+    color: #fff;
+    background-color: #1a1af2;
+}
+
+span {
+    color: white;
+    font-size: 17px;
+}

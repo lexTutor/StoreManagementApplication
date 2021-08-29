@@ -1,0 +1,845 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20606122-FE02-4280-B8FE-FB2D7586D096}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StoreApp.NetFramework</RootNamespace>
+    <AssemblyName>StoreApp.NetFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44317</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CloudinaryDotNet, Version=1.15.2.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.15.2\lib\net452\CloudinaryDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.WebFormsDependencyInjection.Unity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebFormsDependencyInjection.Unity.1.0.0\lib\Net472\Microsoft.AspNet.WebFormsDependencyInjection.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Html.Abstractions, Version=1.0.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Html.Abstractions.1.0.3\lib\netstandard1.0\Microsoft.AspNetCore.Html.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http, Version=2.2.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.2.2.2\lib\netstandard2.0\Microsoft.AspNetCore.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=5.0.9.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.5.0.9\lib\net461\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.2.4\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.ObjectPool.2.2.0\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.1\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.WebEncoders, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.WebEncoders.1.0.0\lib\netstandard1.0\Microsoft.Extensions.WebEncoders.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel.Services" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.1\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.4.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.8.6\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AddStore.css" />
+    <Content Include="Content\LandingPage.css" />
+    <Content Include="Content\StoreDetails.css" />
+    <Content Include="Content\UpdateStore.css" />
+    <Content Include="Content\UserStores.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="LandingViews\LandingForm.aspx" />
+    <Content Include="LandingViews\StoreDetails.aspx" />
+    <Content Include="lib\bootstrap-table\bootstrap-table-locale-all.js" />
+    <Content Include="lib\bootstrap-table\bootstrap-table-locale-all.min.js" />
+    <Content Include="lib\bootstrap-table\bootstrap-table-vue.esm.js" />
+    <Content Include="lib\bootstrap-table\bootstrap-table-vue.esm.min.js" />
+    <Content Include="lib\bootstrap-table\bootstrap-table-vue.js" />
+    <Content Include="lib\bootstrap-table\bootstrap-table-vue.min.js" />
+    <Content Include="lib\bootstrap-table\bootstrap-table.css" />
+    <Content Include="lib\bootstrap-table\bootstrap-table.js" />
+    <Content Include="lib\bootstrap-table\bootstrap-table.min.css" />
+    <Content Include="lib\bootstrap-table\bootstrap-table.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\addrbar\bootstrap-table-addrbar.js" />
+    <Content Include="lib\bootstrap-table\extensions\addrbar\bootstrap-table-addrbar.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\auto-refresh\bootstrap-table-auto-refresh.js" />
+    <Content Include="lib\bootstrap-table\extensions\auto-refresh\bootstrap-table-auto-refresh.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\cookie\bootstrap-table-cookie.js" />
+    <Content Include="lib\bootstrap-table\extensions\cookie\bootstrap-table-cookie.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\copy-rows\bootstrap-table-copy-rows.js" />
+    <Content Include="lib\bootstrap-table\extensions\copy-rows\bootstrap-table-copy-rows.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\custom-view\bootstrap-table-custom-view.js" />
+    <Content Include="lib\bootstrap-table\extensions\custom-view\bootstrap-table-custom-view.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\defer-url\bootstrap-table-defer-url.js" />
+    <Content Include="lib\bootstrap-table\extensions\defer-url\bootstrap-table-defer-url.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\editable\bootstrap-table-editable.js" />
+    <Content Include="lib\bootstrap-table\extensions\editable\bootstrap-table-editable.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\export\bootstrap-table-export.js" />
+    <Content Include="lib\bootstrap-table\extensions\export\bootstrap-table-export.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\filter-control\bootstrap-table-filter-control.css" />
+    <Content Include="lib\bootstrap-table\extensions\filter-control\bootstrap-table-filter-control.js" />
+    <Content Include="lib\bootstrap-table\extensions\filter-control\bootstrap-table-filter-control.min.css" />
+    <Content Include="lib\bootstrap-table\extensions\filter-control\bootstrap-table-filter-control.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\filter-control\utils.js" />
+    <Content Include="lib\bootstrap-table\extensions\filter-control\utils.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\fixed-columns\bootstrap-table-fixed-columns.css" />
+    <Content Include="lib\bootstrap-table\extensions\fixed-columns\bootstrap-table-fixed-columns.js" />
+    <Content Include="lib\bootstrap-table\extensions\fixed-columns\bootstrap-table-fixed-columns.min.css" />
+    <Content Include="lib\bootstrap-table\extensions\fixed-columns\bootstrap-table-fixed-columns.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\group-by-v2\bootstrap-table-group-by.css" />
+    <Content Include="lib\bootstrap-table\extensions\group-by-v2\bootstrap-table-group-by.js" />
+    <Content Include="lib\bootstrap-table\extensions\group-by-v2\bootstrap-table-group-by.min.css" />
+    <Content Include="lib\bootstrap-table\extensions\group-by-v2\bootstrap-table-group-by.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\i18n-enhance\bootstrap-table-i18n-enhance.js" />
+    <Content Include="lib\bootstrap-table\extensions\i18n-enhance\bootstrap-table-i18n-enhance.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\key-events\bootstrap-table-key-events.js" />
+    <Content Include="lib\bootstrap-table\extensions\key-events\bootstrap-table-key-events.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\mobile\bootstrap-table-mobile.js" />
+    <Content Include="lib\bootstrap-table\extensions\mobile\bootstrap-table-mobile.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\multiple-sort\bootstrap-table-multiple-sort.js" />
+    <Content Include="lib\bootstrap-table\extensions\multiple-sort\bootstrap-table-multiple-sort.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\page-jump-to\bootstrap-table-page-jump-to.css" />
+    <Content Include="lib\bootstrap-table\extensions\page-jump-to\bootstrap-table-page-jump-to.js" />
+    <Content Include="lib\bootstrap-table\extensions\page-jump-to\bootstrap-table-page-jump-to.min.css" />
+    <Content Include="lib\bootstrap-table\extensions\page-jump-to\bootstrap-table-page-jump-to.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\pipeline\bootstrap-table-pipeline.js" />
+    <Content Include="lib\bootstrap-table\extensions\pipeline\bootstrap-table-pipeline.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\print\bootstrap-table-print.js" />
+    <Content Include="lib\bootstrap-table\extensions\print\bootstrap-table-print.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\reorder-columns\bootstrap-table-reorder-columns.js" />
+    <Content Include="lib\bootstrap-table\extensions\reorder-columns\bootstrap-table-reorder-columns.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\reorder-rows\bootstrap-table-reorder-rows.css" />
+    <Content Include="lib\bootstrap-table\extensions\reorder-rows\bootstrap-table-reorder-rows.js" />
+    <Content Include="lib\bootstrap-table\extensions\reorder-rows\bootstrap-table-reorder-rows.min.css" />
+    <Content Include="lib\bootstrap-table\extensions\reorder-rows\bootstrap-table-reorder-rows.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\resizable\bootstrap-table-resizable.js" />
+    <Content Include="lib\bootstrap-table\extensions\resizable\bootstrap-table-resizable.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\sticky-header\bootstrap-table-sticky-header.css" />
+    <Content Include="lib\bootstrap-table\extensions\sticky-header\bootstrap-table-sticky-header.js" />
+    <Content Include="lib\bootstrap-table\extensions\sticky-header\bootstrap-table-sticky-header.min.css" />
+    <Content Include="lib\bootstrap-table\extensions\sticky-header\bootstrap-table-sticky-header.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\toolbar\bootstrap-table-toolbar.js" />
+    <Content Include="lib\bootstrap-table\extensions\toolbar\bootstrap-table-toolbar.min.js" />
+    <Content Include="lib\bootstrap-table\extensions\treegrid\bootstrap-table-treegrid.js" />
+    <Content Include="lib\bootstrap-table\extensions\treegrid\bootstrap-table-treegrid.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-af-ZA.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-af-ZA.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ar-SA.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ar-SA.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-bg-BG.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-bg-BG.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ca-ES.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ca-ES.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-cs-CZ.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-cs-CZ.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-da-DK.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-da-DK.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-de-DE.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-de-DE.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-el-GR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-el-GR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-en-US.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-en-US.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-AR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-AR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-CL.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-CL.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-CR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-CR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-ES.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-ES.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-MX.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-MX.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-NI.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-NI.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-SP.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-es-SP.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-et-EE.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-et-EE.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-eu-EU.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-eu-EU.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fa-IR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fa-IR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fi-FI.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fi-FI.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-BE.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-BE.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-CH.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-CH.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-FR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-FR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-LU.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-fr-LU.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-he-IL.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-he-IL.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-hr-HR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-hr-HR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-hu-HU.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-hu-HU.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-id-ID.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-id-ID.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-it-IT.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-it-IT.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ja-JP.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ja-JP.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ka-GE.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ka-GE.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ko-KR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ko-KR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ms-MY.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ms-MY.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-nb-NO.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-nb-NO.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-nl-BE.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-nl-BE.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-nl-NL.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-nl-NL.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-pl-PL.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-pl-PL.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-pt-BR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-pt-BR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-pt-PT.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-pt-PT.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ro-RO.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ro-RO.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ru-RU.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ru-RU.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sk-SK.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sk-SK.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sr-Cyrl-RS.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sr-Cyrl-RS.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sr-Latn-RS.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sr-Latn-RS.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sv-SE.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-sv-SE.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-th-TH.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-th-TH.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-tr-TR.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-tr-TR.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-uk-UA.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-uk-UA.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ur-PK.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-ur-PK.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-uz-Latn-UZ.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-uz-Latn-UZ.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-vi-VN.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-vi-VN.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-zh-CN.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-zh-CN.min.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-zh-TW.js" />
+    <Content Include="lib\bootstrap-table\locale\bootstrap-table-zh-TW.min.js" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\bootstrap-table.css" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\bootstrap-table.js" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\bootstrap-table.min.css" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\bootstrap-table.min.js" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\fonts\bootstrap-table.svg" />
+    <Content Include="lib\bootstrap-table\themes\bulma\bootstrap-table-bulma.css" />
+    <Content Include="lib\bootstrap-table\themes\bulma\bootstrap-table-bulma.js" />
+    <Content Include="lib\bootstrap-table\themes\bulma\bootstrap-table-bulma.min.css" />
+    <Content Include="lib\bootstrap-table\themes\bulma\bootstrap-table-bulma.min.js" />
+    <Content Include="lib\bootstrap-table\themes\foundation\bootstrap-table-foundation.css" />
+    <Content Include="lib\bootstrap-table\themes\foundation\bootstrap-table-foundation.js" />
+    <Content Include="lib\bootstrap-table\themes\foundation\bootstrap-table-foundation.min.css" />
+    <Content Include="lib\bootstrap-table\themes\foundation\bootstrap-table-foundation.min.js" />
+    <Content Include="lib\bootstrap-table\themes\materialize\bootstrap-table-materialize.css" />
+    <Content Include="lib\bootstrap-table\themes\materialize\bootstrap-table-materialize.js" />
+    <Content Include="lib\bootstrap-table\themes\materialize\bootstrap-table-materialize.min.css" />
+    <Content Include="lib\bootstrap-table\themes\materialize\bootstrap-table-materialize.min.js" />
+    <Content Include="lib\bootstrap-table\themes\semantic\bootstrap-table-semantic.css" />
+    <Content Include="lib\bootstrap-table\themes\semantic\bootstrap-table-semantic.js" />
+    <Content Include="lib\bootstrap-table\themes\semantic\bootstrap-table-semantic.min.css" />
+    <Content Include="lib\bootstrap-table\themes\semantic\bootstrap-table-semantic.min.js" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.min.css" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.min.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="lib\font-awesome\css\all.css" />
+    <Content Include="lib\font-awesome\css\all.min.css" />
+    <Content Include="lib\font-awesome\css\brands.css" />
+    <Content Include="lib\font-awesome\css\brands.min.css" />
+    <Content Include="lib\font-awesome\css\fontawesome.css" />
+    <Content Include="lib\font-awesome\css\fontawesome.min.css" />
+    <Content Include="lib\font-awesome\css\regular.css" />
+    <Content Include="lib\font-awesome\css\regular.min.css" />
+    <Content Include="lib\font-awesome\css\solid.css" />
+    <Content Include="lib\font-awesome\css\solid.min.css" />
+    <Content Include="lib\font-awesome\css\svg-with-js.css" />
+    <Content Include="lib\font-awesome\css\svg-with-js.min.css" />
+    <Content Include="lib\font-awesome\css\v4-shims.css" />
+    <Content Include="lib\font-awesome\css\v4-shims.min.css" />
+    <Content Include="lib\font-awesome\js\all.js" />
+    <Content Include="lib\font-awesome\js\all.min.js" />
+    <Content Include="lib\font-awesome\js\brands.js" />
+    <Content Include="lib\font-awesome\js\brands.min.js" />
+    <Content Include="lib\font-awesome\js\conflict-detection.js" />
+    <Content Include="lib\font-awesome\js\conflict-detection.min.js" />
+    <Content Include="lib\font-awesome\js\fontawesome.js" />
+    <Content Include="lib\font-awesome\js\fontawesome.min.js" />
+    <Content Include="lib\font-awesome\js\regular.js" />
+    <Content Include="lib\font-awesome\js\regular.min.js" />
+    <Content Include="lib\font-awesome\js\solid.js" />
+    <Content Include="lib\font-awesome\js\solid.min.js" />
+    <Content Include="lib\font-awesome\js\v4-shims.js" />
+    <Content Include="lib\font-awesome\js\v4-shims.min.js" />
+    <Content Include="lib\font-awesome\sprites\brands.svg" />
+    <Content Include="lib\font-awesome\sprites\regular.svg" />
+    <Content Include="lib\font-awesome\sprites\solid.svg" />
+    <Content Include="lib\font-awesome\webfonts\fa-brands-400.svg" />
+    <Content Include="lib\font-awesome\webfonts\fa-regular-400.svg" />
+    <Content Include="lib\font-awesome\webfonts\fa-solid-900.svg" />
+    <Content Include="SubDir\About.aspx" />
+    <Content Include="Authentication\Authenticate.aspx" />
+    <Content Include="Authentication\LogOut.aspx" />
+    <Content Include="SubDir\AddStore.aspx" />
+    <Content Include="SubDir\Contact.aspx" />
+    <Content Include="Content\AuthStyle.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Dockerfile" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
+    <Content Include="libman.json" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.min.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="lib\bootstrap\scss\_accordion.scss" />
+    <Content Include="lib\bootstrap\scss\_alert.scss" />
+    <Content Include="lib\bootstrap\scss\_badge.scss" />
+    <Content Include="lib\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="lib\bootstrap\scss\_button-group.scss" />
+    <Content Include="lib\bootstrap\scss\_buttons.scss" />
+    <Content Include="lib\bootstrap\scss\_card.scss" />
+    <Content Include="lib\bootstrap\scss\_carousel.scss" />
+    <Content Include="lib\bootstrap\scss\_close.scss" />
+    <Content Include="lib\bootstrap\scss\_containers.scss" />
+    <Content Include="lib\bootstrap\scss\_dropdown.scss" />
+    <Content Include="lib\bootstrap\scss\_forms.scss" />
+    <Content Include="lib\bootstrap\scss\_functions.scss" />
+    <Content Include="lib\bootstrap\scss\_grid.scss" />
+    <Content Include="lib\bootstrap\scss\_helpers.scss" />
+    <Content Include="lib\bootstrap\scss\_images.scss" />
+    <Content Include="lib\bootstrap\scss\_list-group.scss" />
+    <Content Include="lib\bootstrap\scss\_mixins.scss" />
+    <Content Include="lib\bootstrap\scss\_modal.scss" />
+    <Content Include="lib\bootstrap\scss\_nav.scss" />
+    <Content Include="lib\bootstrap\scss\_navbar.scss" />
+    <Content Include="lib\bootstrap\scss\_offcanvas.scss" />
+    <Content Include="lib\bootstrap\scss\_pagination.scss" />
+    <Content Include="lib\bootstrap\scss\_placeholders.scss" />
+    <Content Include="lib\bootstrap\scss\_popover.scss" />
+    <Content Include="lib\bootstrap\scss\_progress.scss" />
+    <Content Include="lib\bootstrap\scss\_reboot.scss" />
+    <Content Include="lib\bootstrap\scss\_root.scss" />
+    <Content Include="lib\bootstrap\scss\_spinners.scss" />
+    <Content Include="lib\bootstrap\scss\_tables.scss" />
+    <Content Include="lib\bootstrap\scss\_toasts.scss" />
+    <Content Include="lib\bootstrap\scss\_tooltip.scss" />
+    <Content Include="lib\bootstrap\scss\_transitions.scss" />
+    <Content Include="lib\bootstrap\scss\_type.scss" />
+    <Content Include="lib\bootstrap\scss\_utilities.scss" />
+    <Content Include="lib\bootstrap\scss\_variables.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap-utilities.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_floating-labels.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-check.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-control.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-range.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-select.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-text.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_input-group.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_labels.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_validation.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_clearfix.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_colored-links.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_position.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_ratio.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_stacks.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_stretched-link.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_text-truncation.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_visually-hidden.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_vr.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_backdrop.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_color-scheme.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_container.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_table-variants.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_utilities.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_visually-hidden.scss" />
+    <Content Include="lib\bootstrap\scss\utilities\_api.scss" />
+    <Content Include="lib\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\fonts\bootstrap-table.eot" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\fonts\bootstrap-table.ttf" />
+    <Content Include="lib\bootstrap-table\themes\bootstrap-table\fonts\bootstrap-table.woff" />
+    <Content Include="lib\font-awesome\webfonts\fa-brands-400.eot" />
+    <Content Include="lib\font-awesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="lib\font-awesome\webfonts\fa-brands-400.woff" />
+    <Content Include="lib\font-awesome\webfonts\fa-regular-400.eot" />
+    <Content Include="lib\font-awesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="lib\font-awesome\webfonts\fa-regular-400.woff" />
+    <Content Include="lib\font-awesome\webfonts\fa-solid-900.eot" />
+    <Content Include="lib\font-awesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="lib\font-awesome\webfonts\fa-solid-900.woff" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Images\Lamborghini.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Content Include="SubDir\RemoveStore.aspx" />
+    <Content Include="SubDir\UpdateStore.aspx" />
+    <Content Include="SubDir\UserStores.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Services\CustomMembershipProvider.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LandingViews\LandingForm.aspx.cs">
+      <DependentUpon>LandingForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LandingViews\LandingForm.aspx.designer.cs">
+      <DependentUpon>LandingForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LandingViews\StoreDetails.aspx.cs">
+      <DependentUpon>StoreDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LandingViews\StoreDetails.aspx.designer.cs">
+      <DependentUpon>StoreDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IImageService.cs" />
+    <Compile Include="Services\ImageService.cs" />
+    <Compile Include="SubDir\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubDir\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Authentication\Authenticate.aspx.cs">
+      <DependentUpon>Authenticate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Authentication\Authenticate.aspx.designer.cs">
+      <DependentUpon>Authenticate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Authentication\LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Authentication\LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubDir\AddStore.aspx.cs">
+      <DependentUpon>AddStore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubDir\AddStore.aspx.designer.cs">
+      <DependentUpon>AddStore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubDir\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubDir\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Enums.cs" />
+    <Compile Include="Helpers\ServerValidation.cs" />
+    <Compile Include="Helpers\StaticMarkup.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SubDir\RemoveStore.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>RemoveStore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubDir\RemoveStore.aspx.designer.cs">
+      <DependentUpon>RemoveStore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubDir\UpdateStore.aspx.cs">
+      <DependentUpon>UpdateStore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubDir\UpdateStore.aspx.designer.cs">
+      <DependentUpon>UpdateStore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubDir\UserStores.aspx.cs">
+      <DependentUpon>UserStores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubDir\UserStores.aspx.designer.cs">
+      <DependentUpon>UserStores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StoreApp.DataAccess\StoreApp.DataAccess.csproj">
+      <Project>{2579595d-5f13-46a6-989f-7d0fe677b98a}</Project>
+      <Name>StoreApp.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StoreApp.Models\StoreApp.Models.csproj">
+      <Project>{1915151d-62bb-4f29-8a0f-c76b469c8f83}</Project>
+      <Name>StoreApp.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51266</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44317/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
