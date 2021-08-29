@@ -1,0 +1,20 @@
+﻿.name-column {
+    vertical-align: top;
+    text-align: left;
+    padding: 110px 30px 50px 30px;
+    font-family: Candara;
+    font-weight: bold;
+    font-style: italic;
+    font-size: larger
+}
+
+.sub-name {
+    font-size: large;
+    font-weight: bolder
+}
+
+.product-column {
+    font-family: Magneto;
+    font-style: oblique;
+    font-synthesis: style
+}
