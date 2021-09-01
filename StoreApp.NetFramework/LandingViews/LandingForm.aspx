@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LandingForm.aspx.cs" 
-    Inherits="StoreApp.NetFramework.LandingViews.LandingFormaspx" Async="true" %>
+    Inherits="StoreApp.NetFramework.LandingViews.LandingForm" Async="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../Content/LandingPage.css" rel="stylesheet" />
      <section>

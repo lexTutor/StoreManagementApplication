@@ -9,22 +9,33 @@ using Unity;
 using StoreManagemnt.DataAccess.Implementations;
 using StoreApp.DataAccess.Seeder;
 using StoreApp.NetFramework.Services;
+using NLog;
 
 namespace StoreApp.NetFramework
 {
     public class Global : HttpApplication
     {
+        
+
         void Application_Start(object sender, EventArgs e)
         {
             var container = this.AddUnity();
 
-            EntitySeeder.Seed().Wait();
+            try
+            {
+                EntitySeeder.Seed().Wait();
+            }
+            catch (Exception ex)
+            {
+               var logger = LogManager.GetCurrentClassLogger();
+                logger.Error(ex.Message, "Unable to start application");
+            }
 
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IStoreRepository, StoreRepositoryWithADO>();
             container.RegisterType<IImageService, ImageService>();
-
-
+            container.RegisterType<Logger>();
+            
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
