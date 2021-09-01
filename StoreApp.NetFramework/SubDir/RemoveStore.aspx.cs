@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using NLog;
 using StoreApp.DataAccess.Interfaces;
 
 namespace StoreApp.NetFramework.SubDir
@@ -7,6 +8,7 @@ namespace StoreApp.NetFramework.SubDir
     public partial class RemoveStore : Page
     {
         private readonly IStoreRepository _storeRepository;
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public RemoveStore(IStoreRepository storeRepository)
         {
@@ -14,12 +16,22 @@ namespace StoreApp.NetFramework.SubDir
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            string storeId = Request.QueryString["storeId"];
-            if (!string.IsNullOrWhiteSpace(storeId))
+            try
             {
-            _storeRepository.Delete(storeId).ConfigureAwait(false).GetAwaiter().GetResult();
+                string storeId = Request.QueryString["storeId"];
+                if (!string.IsNullOrWhiteSpace(storeId))
+                {
+                    _storeRepository.Delete(storeId).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
             }
-            Response.Redirect("~/SubDir/UserStores.aspx");
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+            }
+            finally 
+            {
+                Response.Redirect("~/SubDir/UserStores.aspx");
+            }
         }
     }
 }

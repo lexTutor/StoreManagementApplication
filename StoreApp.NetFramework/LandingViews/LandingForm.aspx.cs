@@ -1,4 +1,5 @@
-﻿using StoreApp.DataAccess.Interfaces;
+﻿using NLog;
+using StoreApp.DataAccess.Interfaces;
 using StoreApp.Models;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,11 @@ using System.Web.UI.WebControls;
 
 namespace StoreApp.NetFramework.LandingViews
 {
-    public partial class LandingFormaspx : System.Web.UI.Page
+    public partial class LandingForm : System.Web.UI.Page
     {
         private readonly IStoreRepository _storeRepository;
-        public LandingFormaspx(IStoreRepository storeRepository)
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
+        public LandingForm(IStoreRepository storeRepository)
         {
             _storeRepository = storeRepository ?? throw new ArgumentNullException(nameof(storeRepository));
         }
@@ -24,71 +26,15 @@ namespace StoreApp.NetFramework.LandingViews
 
         public async Task<ICollection<Store>> GetStores()
         {
-            return await _storeRepository.GetAll();
-            //return new List<Store>
-            //{
-            //    new Store
-            //    {
-            //        Name = "Jesus Store",
-            //        TotalNumbeOfProducts= 3000,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "Lex's Store",
-            //        TotalNumbeOfProducts= 2000,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "Row's Store",
-            //        TotalNumbeOfProducts= 1500,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "Chi's Store",
-            //        TotalNumbeOfProducts= 1000,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "G's Store",
-            //        TotalNumbeOfProducts= 500,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "R's Store",
-            //        TotalNumbeOfProducts= 1000,
-            //        Image = "https://source.unsplash.com/random"
-            //    } ,
-            //    new Store
-            //    {
-            //        Name = "Jesus Store",
-            //        TotalNumbeOfProducts= 3000,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "Lex's Store",
-            //        TotalNumbeOfProducts= 2000,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "Row's Store",
-            //        TotalNumbeOfProducts= 1500,
-            //        Image = "https://source.unsplash.com/random"
-            //    },
-            //    new Store
-            //    {
-            //        Name = "Chi's Store",
-            //        TotalNumbeOfProducts= 1000,
-            //        Image = "https://source.unsplash.com/random"
-            //    }
+            try
+            {
+                return await _storeRepository.GetAll();
             }
-        //}
-
+            catch (Exception ex)
+            {
+                _logger.Warn(ex.Message);
+                return new List<Store>();
+            }
+        }
     }
 }

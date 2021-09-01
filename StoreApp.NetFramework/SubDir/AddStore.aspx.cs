@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
+using NLog;
 using StoreApp.DataAccess.Interfaces;
 using StoreApp.Models;
 using StoreApp.NetFramework.Helpers;
@@ -17,6 +18,7 @@ namespace StoreApp.NetFramework.SubDir
     {
         private readonly IStoreRepository _storeRepository;
         private readonly IImageService _imageService;
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public AddStore(IStoreRepository storeRepository, IImageService imageService)
         {
@@ -54,13 +56,14 @@ namespace StoreApp.NetFramework.SubDir
                 }
                 catch (FormatException ex)
                 {
+                    _logger.Error(ex.Message);
                     ErrorLbl.Text = ex.Message;
                     ErrorLbl.ForeColor = System.Drawing.Color.DarkRed;
                     return;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    _logger.Error(ex.Message);
                     ErrorLbl.Text = "Unable to add store";
                     ErrorLbl.ForeColor = System.Drawing.Color.DarkRed;
                     return;
@@ -82,8 +85,9 @@ namespace StoreApp.NetFramework.SubDir
                     IFormFile file = new FormFile(ms, 0, ms.Length, FileUpload.FileName, FileUpload.FileName);
                     return  _imageService.UploadImage(file);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    _logger.Error(ex.Message);
                     ms.Dispose();
                     throw;
                 }

@@ -11,7 +11,7 @@ namespace StoreApp.NetFramework.LandingViews
 {
 
 
-    public partial class LandingFormaspx
+    public partial class LandingForm
     {
 
         /// <summary>
