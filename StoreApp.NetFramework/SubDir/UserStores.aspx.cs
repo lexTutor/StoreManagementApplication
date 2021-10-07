@@ -37,8 +37,6 @@ namespace StoreApp.NetFramework.SubDir
                 _logger.Error(ex);
                 return new List<Store>();
             }
-
-
         }
     }
 }

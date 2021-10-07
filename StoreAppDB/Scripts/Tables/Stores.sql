@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[Stores]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL,
+	[UserName] NVARCHAR(150) NOT NULL,
+	[Name] NVARCHAR(150) NOT NULL,
+	[Image] NVARCHAR(150) NOT NULL,
+	[TotalNumberOfProducts] INT NOT NULL,
+	CONSTRAINT [PK_Stores]
+		PRIMARY KEY CLUSTERED ([Id] ASC) 
+)
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Stores_UserName]
+ON [dbo].[Stores] ([UserName] ASC);
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Stores_Name]
+ON [dbo].[Stores] ([UserName] ASC);

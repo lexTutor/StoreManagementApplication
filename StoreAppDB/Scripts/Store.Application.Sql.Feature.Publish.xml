@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<IncludeCompositeObjects>True</IncludeCompositeObjects>
+		<TargetDatabaseName>StoreApp</TargetDatabaseName>
+		<DeployScriptFileName>Stores.sql</DeployScriptFileName>
+		<TargetConnectionString>Data Source=.;Persist Security Info=True;User ID=*****;Password=*****;Pooling=False;MultipleActiveResultSets=True;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False</TargetConnectionString>
+		<BlockWhenDriftDetected>False</BlockWhenDriftDetected>
+		<RegisterDataTierApplication>False</RegisterDataTierApplication>
+		<ProfileVersionNumber>1</ProfileVersionNumber>
+	</PropertyGroup>
+</Project>
