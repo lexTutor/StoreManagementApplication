@@ -1,6 +1,6 @@
 # StoreManagementApplication
 
-#### An Asp.Net web forms appplication that helps users manage various stores and track the total number of products in the stores.
+#### An Asp.Net web forms application that helps users manage various stores and track the total number of products in the stores.
 
 ##### Authentication in this application was configured using forms authentication by providing a custom implementation for the memebership provider class.
 
